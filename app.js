@@ -1,11 +1,12 @@
-const express = require('express')
-const app = express()
-const port = 4000
+const express = require('express');
+const routes = require('./src/routes');
 
-app.get('/', (req, res) => {
-    res.send('Olá Mundo!')
-})
+const app = express();
 
-app.listen(port, () => {
-    console.log(`Exemplo de app rodando em http://localhost:${port}`)
-})
+// Middleware para JSON
+app.use(express.json());
+
+// Rotas
+app.use('/api', routes);
+
+module.exports = app;
